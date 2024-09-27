@@ -1,17 +1,29 @@
-## My Project
+# Object detection with YOLO and NVIDIA Triton Inference Server on Amazon EKS
 
-TODO: Fill this README out!
+This blueprint deploys a solution for running inference with [YOLO](https://github.com/ultralytics/ultralytics) (You Only Look Once), [NVIDIA Triton Inference Server](https://developer.nvidia.com/triton-inference-server) and [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS).
 
-Be sure to:
+## Installation
 
-* Change the title in this README
-* Edit your repository description on GitHub
+Export the YOLO model in [ONNX](https://onnx.ai/) (Open Neural Network Exchange) format:
 
-## Security
+```bash
+from ultralytics import YOLO
+model = YOLO("yolov8n.pt")
+model.export(format="onnx")
+```
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+Move it under the `/model_repository/yolo/1/` directory and rename it `model.onnx`.
+
+Run `install.sh`.
+
+## Cleanup
+
+Run `cleanup.sh`.
+
+## Credits
+
+The code on this repository is based on [Data on EKS](https://awslabs.github.io/data-on-eks/).
 
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
